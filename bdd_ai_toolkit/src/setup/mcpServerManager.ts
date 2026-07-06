@@ -635,8 +635,19 @@ export class McpServerManager {
           // 2. Scrub credentials used by the extensible provider mechanism:
           //    the dedicated "credentials" block and any creds inlined into
           //    "providerOptions".
-          scrub(processedConfig["credentials"], ["username", "user", "accessKey", "access_key"]);
-          scrub(processedConfig["providerOptions"], ["user", "userName", "username", "accessKey", "access_key"]);
+          scrub(processedConfig["credentials"], [
+            "username",
+            "user",
+            "accessKey",
+            "access_key",
+          ]);
+          scrub(processedConfig["providerOptions"], [
+            "user",
+            "userName",
+            "username",
+            "accessKey",
+            "access_key",
+          ]);
 
           processedConfigs[platform] = processedConfig;
         }
@@ -660,7 +671,6 @@ export class McpServerManager {
       return {};
     }
   }
-
 
   private async extractPywinautoConfig(serverPath: string): Promise<any> {
     try {
